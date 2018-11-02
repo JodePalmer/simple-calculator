@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>My test page</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+
+	<body>
+		<header>
+			<h1>Simple Calculator</h1>
+		</header>
+
+		<section>
+			<div class="container">
+				<table border="1" cellspacing="0">
+					<tr>
+						<td colspan="4" id="inputLabel">0</td>  <!-- Colspan is how many columns is needed for that cell of the table. This is creating the view box -->
+					</tr>
+					<tr>
+						<td colspan="3"><button onclick="pushBtn(this);">AC</button></td> <!-- The onclick event occurs when a user presses a button, this is followed by a function that we have named and designed further down in the javascript. -->
+						<td><button onclick="pushBtn(this);">/</button></td>
+					</tr>
+					<tr>
+						<td><button onclick="pushBtn(this);">7</button></td>
+						<td><button onclick="pushBtn(this);">8</button></td>
+						<td><button onclick="pushBtn(this);">9</button></td>
+						<td><button onclick="pushBtn(this);">*</button></td>
+					</tr>
+					<tr>
+						<td><button onclick="pushBtn(this);">4</button></td>
+						<td><button onclick="pushBtn(this);">5</button></td>
+						<td><button onclick="pushBtn(this);">6</button></td>
+						<td><button onclick="pushBtn(this);">-</button></td>
+					</tr>
+					<tr>
+						<td><button onclick="pushBtn(this);">1</button></td>
+						<td><button onclick="pushBtn(this);">2</button></td>
+						<td><button onclick="pushBtn(this);">3</button></td>
+						<td><button onclick="pushBtn(this);">+</button></td>
+					</tr>
+					<tr>
+						<td colspan="2"><button onclick="pushBtn(this);">0</button></td>
+						<td><button onclick="pushBtn(this);">.</button></td>
+						<td><button onclick="pushBtn(this);">=</button></td>
+					</tr>
+				</table>
+			</div>
+		</section>
+
+		<script>
+			
+			var inputLabel = document.getElementById('inputLabel'); // Here we are just creating a variable which targets our view box cell //
+
+			function pushBtn(obj) { // This is where we are defining our pushBtn function that we have used in our HTML //
+				
+				var pushed = obj.innerHTML; // This variable is to target the value of each button i.e 1,2,7,8, + , =. //
+
+				if (pushed == '=') {  // if the symbol of the button pushed is equal to ='s then...
+					
+					inputLabel.innerHTML = eval(inputLabel.innerHTML); // the eval function, executes a string as Javascript code and calculates the sum for us //
+				
+				} else if (pushed == 'AC') { // if the ='s button isn't pushed but the button pushed is equal to AC then...
+					
+					inputLabel.innerHTML = '0'; // change the inputLabel to show 0 //
+				
+				} else {  // if neither of these buttons are pushed...
+					if (inputLabel.innerHTML == '0') {
+						inputLabel.innerHTML = pushed;
+					} else {
+						inputLabel.innerHTML += pushed;
+					
+					}
+				}
+			}	
+
+		</script>
+
+	</body>
+
+</html>
